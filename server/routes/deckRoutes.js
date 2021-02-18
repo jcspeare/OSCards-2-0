@@ -13,9 +13,4 @@ deckRouter.get('/:deckId', deckController.readDeckOfCards, (req, res) => {
 });
 
 
-// directs delete request for the selected cardId
-deckRouter.delete('/delete/:cardId', deckController.deleteCard, (req, res) => {
-  res.status(200).json(res.locals.count);
-})
-
 module.exports = deckRouter;

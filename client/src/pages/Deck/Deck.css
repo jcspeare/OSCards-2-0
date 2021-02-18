@@ -12,6 +12,12 @@
   grid-gap: 16px;
 }
 
+.updateInputBar {
+  width: 80%;
+  margin: 4px;
+  border: 1px solid gray;
+}
+
 /* // Smallest device */
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

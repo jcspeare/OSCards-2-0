@@ -26,18 +26,4 @@ deckController.readDeckOfCards = (req, res, next) => {
 };
 
 
-
-deckController.deleteCard = (req, res, next) => {
-  const { cardId } = req.params;
-
-  CardModel.deleteOne({ _id: `${cardId}` })
-    .then(data => {
-      res.locals.count = data.n;
-      // console.log('TESTING DATA: ', data);
-      return next();
-    })
-    .catch(err => next(err));
-}
-
-
 module.exports = deckController;

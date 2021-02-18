@@ -19,4 +19,33 @@ cardController.addCard = (req, res, next) => {
     .catch(() => next(new Error('Error in addCard create method')));
 };
 
+
+cardController.deleteCard = (req, res, next) => {
+  const { cardId } = req.params;
+
+  CardModel.deleteOne({ _id: `${cardId}` })
+    .then(data => {
+      res.locals.count = data.n;
+      return next();
+    })
+    .catch(err => next(err));
+}
+
+
+cardController.patchCard = (req, res, next) => {
+  const cid = req.params.cardId;
+  const { term, definition } = req.body;
+  const value = {
+    term: term,
+    definition: definition,
+  };
+
+  CardModel.updateOne({_id: {$eq: cid}}, value)
+    .then(result => {
+      res.locals.patchedCard = result.n;
+      return next();
+    })
+    .catch(err => next(err));
+};
+
 module.exports = cardController;
