@@ -35,7 +35,6 @@ class Deck extends Component {
 
 
   handleDelete(id) {
-    // fetch(`/deck/delete/${id}`, {method: 'DELETE'})
     axios.delete(`/card/delete/${id}`, { data: { source: id } })
       .then(deletedNum => {
         console.log(`Successfully deleted ${deletedNum.data} card[s]`);

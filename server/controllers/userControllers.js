@@ -16,23 +16,21 @@ userController.getUser = (req, res, next) => {
 };
 
 userController.createUser = (req, res, next) => {
-    const { username, password } = req.body;
-    const queryObj = {
-      username: username,
-      password: password,
-      decks: []
-    };
+  const { username, password } = req.body;
+  const queryObj = {
+    username,
+    password,
+  };
 
-    User.create(queryObj)
-      .then(results => {
-        console.log('Create new user => ', results);
-        res.locals.user = results;
-        return next();
-      })
-      .catch(err => next({
-        err: `Error creating new user in database: ${err}`
-      }))
-}
-
+  User.create(queryObj)
+    .then((results) => {
+      console.log('Create new user => ', results);
+      res.locals.user = results;
+      return next();
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
 
 module.exports = userController;

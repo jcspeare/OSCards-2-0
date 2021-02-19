@@ -20,6 +20,6 @@ const cardSchema = new Schema ({
     required: true
   }
 });
-
+// cardSchema.index({ term: 1, definition: 1, deckId: 1}, { unique: true });
 // export the model that we make
 module.exports = mongoose.model('Card', cardSchema);

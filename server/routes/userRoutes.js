@@ -9,7 +9,7 @@ userRouter.post('/', userController.getUser, (req, res) => {
 });
 
 userRouter.post('/new', userController.createUser, (req, res) => {
-    res.status(200).send(res.locals.user);
-})
+  res.status(200).send(res.locals.user);
+});
 
 module.exports = userRouter;
